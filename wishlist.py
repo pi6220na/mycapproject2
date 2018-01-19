@@ -1,7 +1,6 @@
 #Main program
 
 import ui, datastore, fileio
-from book import Book
 
 
 def handle_choice(choice):
@@ -48,20 +47,27 @@ def book_read():
 
 def new_book():
     '''Get info from user, add new book'''
+    global counter
+
     new_book = ui.get_new_book_info()
-    datastore.add_book(new_book)
+    counter = datastore.add_book(new_book, counter)
     ui.message('Book added: ' + str(new_book))
 
 
 def quit():
     '''Perform shutdown tasks'''
-    fileio.shutdown()
+    global counter
+
+    print ('in wishlist.py, about to shutdown, counter = ' + str(counter))
+
+    fileio.shutdown(counter)
     ui.message('Bye!')
 
 
 def main():
+    global counter
 
-    fileio.setup()
+    counter = fileio.setup()
 
     quit = 'q'
     choice = None

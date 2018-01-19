@@ -3,16 +3,14 @@
 # Jeremy Wolfe 1/19/2018
 
 import os, datastore, json
-from book import Book
+
 
 DATA_DIR = 'data'
 BOOKS_FILE_NAME = os.path.join(DATA_DIR, 'wishlist.txt')
 COUNTER_FILE_NAME = os.path.join(DATA_DIR, 'counter.txt')
 
-separator = '^^^'  # a string probably not in any valid data relating to a book
-
 book_list = []
-counter = 0
+
 
 def setup():
     ''' Read book info from file, if file exists. '''
@@ -36,15 +34,16 @@ def setup():
             try:
                 counter = int(f.read())
             except:
+                print('problem reading counter.txt file')
                 counter = 0
     except:
         counter = len(book_list)
 
+    print('setup counter = ' + str(counter))
+    return counter
 
-def shutdown():
+def shutdown(counter):
     '''Save all data to a file - one for books, one for the current counter value, for persistent storage'''
-
-    global counter
 
     output_data = datastore.make_output_data()
 
@@ -58,5 +57,6 @@ def shutdown():
         json.dump(output_data, f)
 
     with open(COUNTER_FILE_NAME, 'w') as f:
+        print('writing counter to file = ' + str(counter))
         f.write(str(counter))
 

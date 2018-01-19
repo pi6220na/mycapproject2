@@ -18,7 +18,7 @@ class Book:
 
     def __str__(self):
         read_str = 'no'
-        if self.read == 'True':
+        if self.read:
             read_str = 'yes'
 
         #Jeremy
