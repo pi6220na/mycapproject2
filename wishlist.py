@@ -1,6 +1,6 @@
 #Main program
 
-import ui, datastore
+import ui, datastore, fileio
 from book import Book
 
 
@@ -55,13 +55,13 @@ def new_book():
 
 def quit():
     '''Perform shutdown tasks'''
-    datastore.shutdown()
+    fileio.shutdown()
     ui.message('Bye!')
 
 
 def main():
 
-    datastore.setup()
+    fileio.setup()
 
     quit = 'q'
     choice = None
