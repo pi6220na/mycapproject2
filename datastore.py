@@ -1,5 +1,5 @@
 
-import os, fileio
+import os, fileio, json
 from book import Book
 
 separator = '^^^'  # a string probably not in any valid data relating to a book
@@ -13,11 +13,24 @@ def get_books(**kwargs):
 
     global book_list
 
+    #Jeremy debugging
+    #print('entering get_books. kwargs = ' + str(kwargs))
+    #for item in book_list:
+    #    print(item)
+
+
     if len(kwargs) == 0:
         return book_list
 
+    if kwargs['read']:
+        k_string = 'True'
+    else:
+        k_string = 'False'
+
     if 'read' in kwargs:
-        read_books = [ book for book in book_list if book.read == kwargs['read'] ]
+        #print('within the if "read" in kwargs')
+        #print(kwargs['read'])
+        read_books = [ book for book in book_list if book.read == k_string ]
         return read_books
 
 
@@ -57,13 +70,19 @@ def make_book_list(string_from_file):
 
     global book_list
 
-    books_str = string_from_file.split('\n')
+    #Jeremy debugging
+    #print('string_from_file = ' + string_from_file)
 
-    for book_str in books_str:
-        data = book_str.split(separator)
-        book = Book(data[0], data[1], data[2] == 'True', int(data[3]))
+    myJSON = json.JSONDecoder().decode(string_from_file)
+
+    #print('myJSON = ' + str(myJSON))
+
+    for book_str in myJSON:
+        book = Book(book_str['book'],book_str['author'],book_str['beenRead'],book_str['bookID'])
         book_list.append(book)
 
+    #for item in book_list:
+    #    print(item)
 
 def make_output_data():
     ''' create a string containing all data on books, for writing to output file'''
@@ -72,11 +91,12 @@ def make_output_data():
 
     output_data = []
 
+    #reformat a book object into JSON format
     for book in book_list:
-        output = [ book.title, book.author, str(book.read), str(book.id) ]
-        output_str = separator.join(output)
+        output_str = { 'book': book.title, 'author':book.author, 'beenRead':str(book.read), 'bookID':str(book.id) }
         output_data.append(output_str)
 
-    all_books_string = '\n'.join(output_data)
+    #convert output_data into JSON
+    myJSON = json.JSONEncoder().encode(output_data)
 
-    return all_books_string
+    return myJSON

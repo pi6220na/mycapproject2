@@ -2,7 +2,7 @@
 # Issue #2 - Separate file io into a new module.
 # Jeremy Wolfe 1/19/2018
 
-import os, datastore
+import os, datastore, json
 from book import Book
 
 DATA_DIR = 'data'
@@ -21,8 +21,11 @@ def setup():
 
     try :
         with open(BOOKS_FILE_NAME) as f:
-            data = f.read()
+            #data = f.read()
+            data = json.load(f)
             datastore.make_book_list(data)
+
+
     except FileNotFoundError:
         # First time program has run. Assume no books.
         pass
@@ -41,6 +44,8 @@ def setup():
 def shutdown():
     '''Save all data to a file - one for books, one for the current counter value, for persistent storage'''
 
+    global counter
+
     output_data = datastore.make_output_data()
 
     # Create data directory
@@ -50,7 +55,7 @@ def shutdown():
         pass # Ignore - if directory exists, don't need to do anything.
 
     with open(BOOKS_FILE_NAME, 'w') as f:
-        f.write(output_data)
+        json.dump(output_data, f)
 
     with open(COUNTER_FILE_NAME, 'w') as f:
         f.write(str(counter))

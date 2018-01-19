@@ -18,8 +18,11 @@ class Book:
 
     def __str__(self):
         read_str = 'no'
-        if self.read:
+        if self.read == 'True':
             read_str = 'yes'
+
+        #Jeremy
+        #print('in book.py string print read = ' + str(self.read) + ' read_str = ' + read_str)
 
         id_str = self.id
         if id == -1:
