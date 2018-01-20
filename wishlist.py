@@ -17,6 +17,9 @@ def handle_choice(choice):
     elif choice == '4':
         new_book()
 
+    elif choice == '5':
+        sort_books()
+
     elif choice == 'q':
         quit()
 
@@ -57,6 +60,13 @@ def new_book():
 
     counter = datastore.add_book(new_book, counter)
     ui.message('Book added: ' + str(new_book))
+
+
+def sort_books():
+    '''Sort books in Title or Author sequence based on user input'''
+
+    mySort = ui.get_sort_order()
+    datastore.sort_the_list(mySort)
 
 
 def quit():

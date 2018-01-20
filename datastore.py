@@ -117,3 +117,16 @@ def make_output_data():
         output_data.append(output_str)
 
     return output_data
+
+def sort_the_list(mySort):
+    '''sort the book_list based on the user's choice for sort order'''
+
+    global book_list
+
+    if mySort == 't':
+        sorted_list = sorted(book_list, key=lambda book: book.title)  # sort by title
+    else:
+        sorted_list = sorted(book_list, key=lambda book: book.author)  # sort by author
+
+    book_list = sorted_list
+    return book_list

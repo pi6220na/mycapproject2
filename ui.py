@@ -10,6 +10,7 @@ def display_menu_get_choice():
         2. Show books that have been read
         3. Mark a book as read
         4. Add book to wishlist
+        5. Sort all books
         q. Quit
     ''')
 
@@ -79,3 +80,19 @@ def get_new_book_info():
 def message(msg):
     '''Display a message to the user'''
     print(msg)
+
+def get_sort_order():
+    '''Get the user's choice in sorting the book list'''
+
+    while True:
+        try:
+            sort_order = input('Enter sort on Title "T" or sort on Author "A" - input "T" or "A": ')
+
+            if sort_order.lower() == 't' or 'a':
+                return sort_order.lower()
+            else:
+                print('Please enter "T" or "A" or "t" or "a"')
+
+        except ValueError:
+            print('Please enter a "T" or "A"')
+
