@@ -39,7 +39,8 @@ def show_read():
 def book_read():
     ''' Get choice from user, edit datastore, display success/error'''
     book_id = ui.ask_for_book_id()
-    if datastore.set_read(book_id, True):
+    book_rating = ui.ask_for_book_rating()
+    if datastore.set_read(book_id, book_rating):
         ui.message('Successfully updated')
     else:
         ui.message('Book id not found in database')
@@ -50,6 +51,10 @@ def new_book():
     global counter
 
     new_book = ui.get_new_book_info()
+
+    #print('in new_book')
+    #print(new_book)
+
     counter = datastore.add_book(new_book, counter)
     ui.message('Book added: ' + str(new_book))
 
@@ -58,7 +63,7 @@ def quit():
     '''Perform shutdown tasks'''
     global counter
 
-    print ('in wishlist.py, about to shutdown, counter = ' + str(counter))
+    #print ('in wishlist.py, about to shutdown, counter = ' + str(counter))
 
     fileio.shutdown(counter)
     ui.message('Bye!')

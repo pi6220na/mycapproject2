@@ -25,8 +25,10 @@ def show_list(books):
         print ('* No books *')
         return
 
+    #print('about to print books')
+    template = ' Title: {} Author: {} Read: {} Date Read: {} Rating: {} id: {}'
     for book in books:
-        print(book)
+         print(template.format(book.title, book.author, book.read, book.dateRead, book.rating, book.id))
 
     print('* {} book(s) *'.format(len(books)))
 
@@ -46,13 +48,32 @@ def ask_for_book_id():
             print('Please enter an integer number')
 
 
+def ask_for_book_rating():
+    ''' Get the rating 1 - 5 for a book being marked as read '''
+
+    while True:
+        try:
+            rate = int(input('Enter a rating for the book, numberic 1 - 5: '))
+            if rate >= 0 and rate <= 5:
+                return rate
+            else:
+                print('Please enter a positive number between 1 and 5')
+        except ValueError:
+            print('Please enter an integer number')
+
+
+
 def get_new_book_info():
 
     ''' Get title and author of new book from user '''
 
     title = input('Enter title: ')
     author = input('Enter author: ')
-    return Book(title, author)
+    read = False
+    date_read = 'None'
+    rating = 0
+    id = 0
+    return Book(title, author, read, date_read, rating, id)
 
 
 def message(msg):

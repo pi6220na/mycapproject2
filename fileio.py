@@ -21,6 +21,8 @@ def setup():
         with open(BOOKS_FILE_NAME) as f:
             #data = f.read()
             data = json.load(f)
+            print(data)
+            print('')
             datastore.make_book_list(data)
 
 
@@ -39,7 +41,7 @@ def setup():
     except:
         counter = len(book_list)
 
-    print('setup counter = ' + str(counter))
+    #print('in fileio setup, counter = ' + str(counter))
     return counter
 
 def shutdown(counter):

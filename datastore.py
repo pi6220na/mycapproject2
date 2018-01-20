@@ -1,4 +1,13 @@
 from book import Book
+import datetime, json
+import pprint
+
+pp = pprint.PrettyPrinter(indent=4)
+
+# convert a date string into a date
+# command line -  pip install python-dateutil  #http://labix.org/python-dateutil
+# https://stackoverflow.com/questions/466345/converting-string-into-datetime
+from dateutil import parser
 
 book_list = []
 counter = 0
@@ -8,18 +17,32 @@ def get_books(**kwargs):
 
     global book_list
 
+    read_books = []
     #Jeremy debugging
     #print('entering get_books. kwargs = ' + str(kwargs))
-    #for item in book_list:
-    #    print(item)
+
+    #json.dumps(book, indent=4, sort_keys=True)
+    #json.dumps(book_list, indent=4)
 
     if len(kwargs) == 0:
         return book_list
 
-    if 'read' in kwargs:
-        read_books = [ book for book in book_list if book.read == kwargs['read'] ]
-        return read_books
+    #print(type(book_list))
+    #for book in book_list:
+    #    print(type(book))
 
+    if 'read' in kwargs:
+        for book in book_list:
+            #print(book.read)
+            #print(type(book))
+            #print(kwargs['read'])
+            #if (book.read == kwargs['read']):
+            if (book.read == True and kwargs['read'] == True):
+                read_books.append(book)
+            elif (book.read == False and kwargs['read'] == False):
+                read_books.append(book)
+
+        return read_books
 
 def add_book(book, counter):
     ''' Add to db, set id value, return Book'''
@@ -28,7 +51,7 @@ def add_book(book, counter):
 
     book.id = generate_id(counter)
     counter = book.id
-    print('book.id = ' + str(book.id) + ' counter = ' + str(counter))
+    #print('book.id = ' + str(book.id) + ' counter = ' + str(counter))
     book_list.append(book)
     return counter
 
@@ -38,7 +61,7 @@ def generate_id(counter):
     return counter
 
 
-def set_read(book_id, read):
+def set_read(book_id, book_rating):
     '''Update book with given book_id to read. Return True if book is found in DB and update is made, False otherwise.'''
 
     global book_list
@@ -47,6 +70,8 @@ def set_read(book_id, read):
 
         if book.id == book_id:
             book.read = True
+            book.rating = book_rating
+            book.dateRead = str(datetime.datetime.now().date())
             return True
 
     return False # return False if book id is not found
@@ -55,11 +80,27 @@ def set_read(book_id, read):
 def make_book_list(string_from_file):
     ''' turn the string from the file into a list of Book objects'''
 
+    #print('entering make_book_list')
+
     global book_list
 
+    book_list = []
+
+    template = 'Title: {} Author: {} Read: {} Date Read: {} Rating: {} id: {} '
+
+    index = 0
+
     for book_str in string_from_file:
-        book = Book(book_str['book'],book_str['author'],book_str['beenRead'],book_str['bookID'])
-        book_list.append(book)
+
+        bk = Book(book_str['title'], book_str['author'], book_str['read'],
+                            book_str['dateRead'], book_str['rating'], book_str['id'])
+
+        #print(type(bk))
+        book_list.append(bk)
+
+    #print('printing the book_list')
+    #for bk in book_list:
+    #    print(template.format(bk.title, bk.author, bk.read, bk.dateRead, bk.rating, bk.id))
 
 
 def make_output_data():
@@ -71,7 +112,8 @@ def make_output_data():
 
     #reformat a book object into JSON format
     for book in book_list:
-        output_str = { 'book': book.title, 'author':book.author, 'beenRead':(book.read), 'bookID':(book.id) }
+        output_str = { 'title': book.title, 'author':book.author, 'read':(book.read),
+                       'dateRead':str(book.dateRead), 'rating':(book.rating), 'id':(book.id) }
         output_data.append(output_str)
 
     return output_data
