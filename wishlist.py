@@ -20,6 +20,9 @@ def handle_choice(choice):
     elif choice == '5':
         sort_books()
 
+    elif choice == '6':
+        search_books()
+
     elif choice == 'q':
         quit()
 
@@ -67,6 +70,17 @@ def sort_books():
 
     mySort = ui.get_sort_order()
     datastore.sort_the_list(mySort)
+
+
+def search_books():
+    '''Search for a user specified book title and notify the user if found'''
+
+    mySearch = ui.get_search_string()
+    searchResult = datastore.get_books(search=mySearch)
+    if searchResult != 'not found':
+        print('This book was found: ', searchResult)
+    else:
+        print('The book was NOT found')
 
 
 def quit():

@@ -44,6 +44,20 @@ def get_books(**kwargs):
 
         return read_books
 
+    #print(kwargs['search'])
+    if 'search' in kwargs:
+        for book in book_list:
+            #print(book.id)
+            #print(book.title)
+            #print(book.author)
+
+            if (book.title == kwargs['search']):
+                return book
+
+        return 'not found'
+
+
+
 def add_book(book, counter):
     ''' Add to db, set id value, return Book'''
 
@@ -125,8 +139,10 @@ def sort_the_list(mySort):
 
     if mySort == 't':
         sorted_list = sorted(book_list, key=lambda book: book.title)  # sort by title
+        print('book list sorted on title')
     else:
         sorted_list = sorted(book_list, key=lambda book: book.author)  # sort by author
+        print('book list sorted on author')
 
     book_list = sorted_list
     return book_list

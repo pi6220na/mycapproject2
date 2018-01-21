@@ -11,6 +11,7 @@ def display_menu_get_choice():
         3. Mark a book as read
         4. Add book to wishlist
         5. Sort all books
+        6. Search for a book title
         q. Quit
     ''')
 
@@ -88,7 +89,7 @@ def get_sort_order():
         try:
             sort_order = input('Enter sort on Title "T" or sort on Author "A" - input "T" or "A": ')
 
-            if sort_order.lower() == 't' or 'a':
+            if sort_order.lower() == 't' or sort_order.lower() == 'a':
                 return sort_order.lower()
             else:
                 print('Please enter "T" or "A" or "t" or "a"')
@@ -96,3 +97,7 @@ def get_sort_order():
         except ValueError:
             print('Please enter a "T" or "A"')
 
+def get_search_string():
+    '''get the book title the user wants to search for'''
+
+    return input('Enter the book title you want to search for: ')
