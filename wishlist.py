@@ -10,6 +10,9 @@
 # Issue #6 Alert if a book that has been read, is added to the wishlist
 # Nnamdi Keshi 1/22/2018
 
+# Issue #8 Add the ability to edit a book's title and/or author
+# Nnamdi Keshi 1/22/2018
+
 import ui, datastore, fileio
 
 
