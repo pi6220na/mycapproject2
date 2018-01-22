@@ -13,20 +13,28 @@ Built with
 **************************************************************************************************************************************
 
 FEATURES:
+
 	1. Show unread books (wishlist)
 		- Returns a list of unread books from wishlist
+		
 	2. Show books that have been read
 		- Returns a list of read books from wishlist
+		
 	3. Mark a book as read
 		- Select specific book and mark as "Read"
+		
 	4. Add book to wishlist
 		- Adds a book with [title(string),author(string),read(boolean),r_date(date),rating]
+		
 	5. Sort all books
 		- Sorts book list by author or by title
+		
 	6. Search for a book title
 		- Select a book to view/display (by title)
+		
 	7. Delete a book (by title)
 		- Find book by title and delete from book list by confirmation
+		
 	q. Quit
 		- Closes program and records counters to .txt files
 
