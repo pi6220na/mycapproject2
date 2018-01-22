@@ -41,9 +41,13 @@ FEATURES:
 **************************************************************************************************************************************
 
 INSTALLATION:
+
 	1 - First request permission to collab by emailing Contributers
+	
 	2 - Pull request code *book_wishlist*
+	
 	3 - in command line pip install python-dateutil
+	
 	4 - in command line run wishlist.py
 	
 **************************************************************************************************************************************
