@@ -79,9 +79,9 @@ def delete_book(searchResult):
     
     return searchResult
     
-def remove_id(counter):
-    counter -= 1
-    return counter
+#def remove_id(counter):
+    #counter -= 1
+    #return counter
     
 
 def generate_id(counter):
@@ -101,6 +101,7 @@ def set_read(book_id, book_rating):
             book.rating = book_rating
             book.dateRead = str(datetime.datetime.now().date())
             return True
+			
 
     return False # return False if book id is not found
 

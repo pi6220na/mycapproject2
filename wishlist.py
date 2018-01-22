@@ -1,6 +1,9 @@
 #Main program
 # Issue #9 Add the ability to delete a book from the wishlist
 # Nnamdi Keshi 1/21/2018
+# Issue #6 Alert if a book that has been read, is added to the wishlist
+# Nnamdi Keshi 1/22/2018
+
 import ui, datastore, fileio
 
 
@@ -47,11 +50,22 @@ def show_read():
 
 
 def book_read():
-    ''' Get choice from user, edit datastore, display success/error'''
+    ''' Get choice from user, edit datastore, display success/error, get decision for re-read'''
     book_id = ui.ask_for_book_id()
     book_rating = ui.ask_for_book_rating()
+    
     if datastore.set_read(book_id, book_rating):
         ui.message('Successfully updated')
+        
+        while True:
+            againWish=input("\nQuick Question..\nDo you want to add this book back into your wishlist for future reading?").strip().lower()
+            if againWish =="yes":
+                new_book()
+                print ("*Successfully Added to wishlist*\n")
+                break
+                
+            elif againWish != "yes": 
+                break            
     else:
         ui.message('Book id not found in database')
 
