@@ -8,7 +8,7 @@ Project Title: Book Wishlist
 TECH/FRAMEWORK USED:
 
 Built with
-   - Python
+   - Python 3.6.4
 	
 **************************************************************************************************************************************
 
@@ -20,7 +20,7 @@ FEATURES:
         3. Mark a book as read
 			- Select specific book and mark as "Read"
         4. Add book to wishlist
-			- Adds a book with title(string),author(string),read(boolean),r_date(date),rating
+			- Adds a book with [title(string),author(string),read(boolean),r_date(date),rating]
         5. Sort all books
 			- Sorts book list by author or by title
         6. Search for a book title
@@ -33,8 +33,8 @@ FEATURES:
 **************************************************************************************************************************************
 
 INSTALLATION:
-	- First request permission to collab by emailing Contributers
-	2 - Pull code
+	1 - First request permission to collab by emailing Contributers
+	2 - Pull request code *book_wishlist*
 	3 - in command line pip install python-dateutil
 	4 - in command line run wishlist.py
 	
@@ -42,9 +42,8 @@ INSTALLATION:
 CREDITS:
 
 Original fork from https://github.com/minneapolis-edu
-Team Repo: - https://github.com/Nnamdikeshi/book_wishlist
-Collaborator repo: 
-		   - https://github.com/pi6220na
+Team Repos: - https://github.com/Nnamdikeshi
+			- https://github.com/pi6220na
 
 
 **************************************************************************************************************************************
