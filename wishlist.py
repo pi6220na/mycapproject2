@@ -1,6 +1,12 @@
-#Main program
+# Main program
+# Project 2 - Book Wish List
+
 # Issue #9 Add the ability to delete a book from the wishlist
 # Nnamdi Keshi 1/21/2018
+
+# Issue #1 Create a README.md file
+# Nnamdi Keshi 1/22/2018
+
 # Issue #6 Alert if a book that has been read, is added to the wishlist
 # Nnamdi Keshi 1/22/2018
 
