@@ -12,7 +12,8 @@ def display_menu_get_choice():
         4. Add book to wishlist
         5. Sort all books
         6. Search for a book title
-	7. Delete a book (by title)
+	7. Edit a books Title or Author
+	8. Delete a book (by title)
         q. Quit
     ''')
 

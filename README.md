@@ -31,8 +31,10 @@ FEATURES:
 		
 	6. Search for a book title
 		- Select a book to view/display (by title)
-		
-	7. Delete a book (by title)
+	
+	7. Change a book Title or author
+		- 
+	8. Delete a book (by title)
 		- Find book by title and delete from book list by confirmation
 		
 	q. Quit

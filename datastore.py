@@ -71,7 +71,7 @@ def add_book(book, counter):
     return counter
 
 def delete_book(searchResult):
-    # '''Delete book by title from db'''
+    '''Delete book by title from db'''
     
     global book_list
     
@@ -79,10 +79,31 @@ def delete_book(searchResult):
     
     return searchResult
     
-#def remove_id(counter):
-    #counter -= 1
-    #return counter
-    
+def edit_book(book_id):
+    ''' Gather book info from id, gather user decision, edit book info in db'''
+
+    global book_list
+
+    for book in book_list:
+        if book.id == book_id:
+
+            title = book.title
+            author = book.author
+
+            changeTitle = input("Do you wish to change this books Title? yes or no - ")
+
+            if changeTitle == 'yes':
+                title = input("What is the new Title name? ")
+                book.title = title
+                print("The new title will be " + title)
+                
+            changeAuthor = input("Do you wish to change this books Author? yes or no -  ")
+            if changeAuthor == 'yes':
+                author = input("What is the new author's name? ")
+                book.author = author
+            return True
+
+    return False 
 
 def generate_id(counter):
     counter += 1
@@ -101,7 +122,7 @@ def set_read(book_id, book_rating):
             book.rating = book_rating
             book.dateRead = str(datetime.datetime.now().date())
             return True
-			
+            
 
     return False # return False if book id is not found
 

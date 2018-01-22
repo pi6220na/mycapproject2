@@ -34,6 +34,9 @@ def handle_choice(choice):
         search_books()
         
     elif choice == '7':
+        edit_books()
+        
+    elif choice == '8':
         delete_books()
         
     elif choice == 'q':
@@ -106,6 +109,14 @@ def search_books():
     else:
         print('The book was NOT found')
 
+def edit_books():
+    ''' Search for book by ID, notify if update successful '''
+    book_id = ui.ask_for_book_id()
+    if datastore.edit_book(book_id):
+        ui.message('Successfully updated')
+    else:
+        ui.message('The book was NOT found')
+        
 def delete_books():
     '''Search for a user specified book title to to delete'''
     
