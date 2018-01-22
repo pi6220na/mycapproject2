@@ -8,8 +8,8 @@ Project Title: Book Wishlist
 TECH/FRAMEWORK USED:
 
 Built with
-   - Python 3.6.4
-	
+   - Python 3.6.4 - https://www.python.org
+   - git
 **************************************************************************************************************************************
 
 FEATURES:
@@ -41,14 +41,17 @@ FEATURES:
 		- Closes program and records counters to .txt files
 
 **************************************************************************************************************************************
-
 INSTALLATION:
 
-	1 - First request permission to collab by emailing Contributers
+	1 - Prerequisites:
+		Python 3.6 or higher
+		git
 	
-	2 - Pull request code *book_wishlist*
+	2 - Pull request code
+		https://github.com/Nnamdikeshi/book_wishlist
 	
-	3 - in command line pip install python-dateutil
+	3 - Windows: in command line pip install python-dateutil
+		Mac: pip install python-dateutil 
 	
 	4 - in command line run wishlist.py
 	
