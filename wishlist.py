@@ -1,5 +1,6 @@
 #Main program
-
+# Issue #9 Add the ability to delete a book from the wishlist
+# Nnamdi Keshi 1/21/2018
 import ui, datastore, fileio
 
 
@@ -22,7 +23,10 @@ def handle_choice(choice):
 
     elif choice == '6':
         search_books()
-
+        
+    elif choice == '7':
+        delete_books()
+        
     elif choice == 'q':
         quit()
 
@@ -82,6 +86,31 @@ def search_books():
     else:
         print('The book was NOT found')
 
+def delete_books():
+    '''Search for a user specified book title to to delete'''
+    
+    global book_list
+    global counter
+    mySearch = ui.get_search_string()
+    searchResult = datastore.get_books(search=mySearch)
+    
+    if searchResult != 'not found':
+        while True:
+            confirm=input("Book Found.\nDo you really want to delete this book?").strip().lower()
+            if confirm =="yes":
+                #position = fileio.book_list.index(str(searchResult))
+                #print(position)
+                
+                #removed = fileio.book_list.pop(position)
+                removed = datastore.delete_book(searchResult)
+                
+                print ("Successfully Deleted:", searchResult,"\n")
+                break
+                
+            elif confirm != "yes":
+                break
+    else:
+        print('The book was NOT found')
 
 def quit():
     '''Perform shutdown tasks'''

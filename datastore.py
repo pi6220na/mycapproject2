@@ -2,6 +2,7 @@ from book import Book
 import datetime, json
 import pprint
 
+
 pp = pprint.PrettyPrinter(indent=4)
 
 # convert a date string into a date
@@ -69,6 +70,19 @@ def add_book(book, counter):
     book_list.append(book)
     return counter
 
+def delete_book(searchResult):
+    # '''Delete book by title from db'''
+    
+    global book_list
+    
+    removed = book_list.remove(searchResult)
+    
+    return searchResult
+    
+def remove_id(counter):
+    counter -= 1
+    return counter
+    
 
 def generate_id(counter):
     counter += 1
