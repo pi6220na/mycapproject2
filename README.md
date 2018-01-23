@@ -59,8 +59,8 @@ INSTALLATION:
 CREDITS:
 
 Original fork from https://github.com/minneapolis-edu
-Team Repos: - https://github.com/Nnamdikeshi
-			- https://github.com/pi6220na
+Team Repos: - https://github.com/Nnamdikeshi - primary repo used for updating code
+			- https://github.com/pi6220na - (Jeremy)
 
 
 **************************************************************************************************************************************

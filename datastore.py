@@ -1,14 +1,9 @@
 from book import Book
-import datetime, json
+import datetime
 import pprint
 
 
 pp = pprint.PrettyPrinter(indent=4)
-
-# convert a date string into a date
-# command line -  pip install python-dateutil  #http://labix.org/python-dateutil
-# https://stackoverflow.com/questions/466345/converting-string-into-datetime
-from dateutil import parser
 
 book_list = []
 counter = 0
@@ -74,10 +69,15 @@ def delete_book(searchResult):
     '''Delete book by title from db'''
     
     global book_list
-    
-    removed = book_list.remove(searchResult)
-    
-    return searchResult
+
+    myIndex = book_list.index(searchResult)      #get index of book
+    # removed = book_list.remove(searchResult)
+    removed = book_list.pop(myIndex)             #changed to pop - Jeremy
+
+    # return searchResult
+    return removed                             # changed to return removed
+
+
     
 def edit_book(book_id):
     ''' Gather book info from id, gather user decision, edit book info in db'''
@@ -90,17 +90,22 @@ def edit_book(book_id):
             title = book.title
             author = book.author
 
-            changeTitle = input("Do you wish to change this books Title? yes or no - ")
+            changeTitle = input("Do you wish to change this books Title? 'y'es or 'n'o - ")
 
-            if changeTitle == 'yes':
+            if changeTitle.lower() == 'y':
+                print("The current title is: " + title)
+                print("")
                 title = input("What is the new Title name? ")
                 book.title = title
                 print("The new title will be " + title)
                 
-            changeAuthor = input("Do you wish to change this books Author? yes or no -  ")
-            if changeAuthor == 'yes':
+            changeAuthor = input("Do you wish to change this books Author? 'y'es or 'n'o -  ")
+            if changeAuthor.lower() == 'y':
+                print("The current author is: " + author)
+                print("")
                 author = input("What is the new author's name? ")
                 book.author = author
+                print("The new author will be " + author)
             return True
 
     return False 

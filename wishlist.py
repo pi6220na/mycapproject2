@@ -13,6 +13,22 @@
 # Issue #8 Add the ability to edit a book's title and/or author
 # Nnamdi Keshi 1/22/2018
 
+# Issue #2 Sepatate file IO into a new module (fileio.py)
+# Jeremy Wolfe 1/21/2018
+
+# Issue #3 Save the book data as JSON
+# Jeremy Wolfe 1/21/2018
+
+# Issue #5 Save a rating or review of a book that has been read
+# Jeremy Wolfe 1/21/2018
+
+# Issue #7 Sort the list of books by title or author
+# Jeremy Wolfe 1/21/2018
+
+# Issue #10 Save the date a book was read
+# Jeremy Wolfe 1/21/2018
+
+
 import ui, datastore, fileio
 
 
@@ -70,13 +86,13 @@ def book_read():
         ui.message('Successfully updated')
         
         while True:
-            againWish=input("\nQuick Question..\nDo you want to add this book back into your wishlist for future reading?").strip().lower()
-            if againWish =="yes":
+            againWish=input("\nQuick Question..\nDo you want to add this book back into your wishlist for future reading? 'y'es or 'n'o ").strip().lower()
+            if againWish =="y":
                 new_book()
                 print ("*Successfully Added to wishlist*\n")
                 break
                 
-            elif againWish != "yes": 
+            elif againWish != "y":
                 break            
     else:
         ui.message('Book id not found in database')
@@ -130,21 +146,23 @@ def delete_books():
     
     if searchResult != 'not found':
         while True:
-            confirm=input("Book Found.\nDo you really want to delete this book?").strip().lower()
-            if confirm =="yes":
+            confirm=input("Book Found.\nDo you really want to delete this book? 'y'es or 'n'o ").strip().lower()
+            if confirm.lower() =="y":
                 #position = fileio.book_list.index(str(searchResult))
                 #print(position)
                 
                 #removed = fileio.book_list.pop(position)
                 removed = datastore.delete_book(searchResult)
                 
-                print ("Successfully Deleted:", searchResult,"\n")
+                #print ("Successfully Deleted:", searchResult,"\n")
+                print("Successfully Deleted:", removed, "\n")          # changed to print removed - Jeremy
                 break
                 
-            elif confirm != "yes":
+            elif confirm != "y":
                 break
     else:
         print('The book was NOT found')
+
 
 def quit():
     '''Perform shutdown tasks'''

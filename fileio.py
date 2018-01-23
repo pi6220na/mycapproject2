@@ -21,8 +21,8 @@ def setup():
         with open(BOOKS_FILE_NAME) as f:
             #data = f.read()
             data = json.load(f)
-            print(data)
-            print('')
+            #print(data)
+            #print('')
             datastore.make_book_list(data)
 
 
@@ -59,6 +59,6 @@ def shutdown(counter):
         json.dump(output_data, f)
 
     with open(COUNTER_FILE_NAME, 'w') as f:
-        print('writing counter to file = ' + str(counter))
+        #print('writing counter to file = ' + str(counter))
         f.write(str(counter))
 
