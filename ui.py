@@ -1,6 +1,7 @@
 from book import Book
 
 
+
 def display_menu_get_choice():
 
     '''Display choices for user, return users' selection'''
@@ -77,8 +78,9 @@ def get_new_book_info():
     date_read = 'None'
     rating = 0
     id = 0
-    return Book(title, author, read, date_read, rating, id)
 
+    #return Book(title, author, read, date_read, rating, id)
+    return Book.make_book(title, author, read, date_read, rating, id)
 
 def message(msg):
     '''Display a message to the user'''

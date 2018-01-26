@@ -16,16 +16,16 @@ class Book(object):
         self.id=id              #integer incremented in book added sequence
 
     # alternate constructor
-    #@classmethod
-    #def make_book(self, title, author, read, r_date, rating, id):
-    #    self.title = title      #string
-    #    self.author = author    #string
-    #    self.read = read        #boolean
-    #    self.dateRead = r_date  #date
-    #    self.rating = rating    #integer 1 - 5
-    #    self.id=id              #integer incremented in book added sequence
-    #    print('printing from within the make book class method: title and author: ' + self.title, self.author)
-    #    return self
+    @classmethod
+    def make_book(self, title, author, read, r_date, rating, id):
+        self.title = title      #string
+        self.author = author    #string
+        self.read = read        #boolean
+        self.dateRead = r_date  #date
+        self.rating = rating    #integer 1 - 5
+        self.id=id              #integer incremented in book added sequence
+        print('printing from within the make book class method: title and author: ' + self.title, self.author)
+        return self
 
     def set_id(self, id):
         self.id = id
